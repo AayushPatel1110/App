@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ================= LAYOUT ================= */
+
+.page-center {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--background);
+}
+
+/* ================= CARD ================= */
+
+.auth-card {
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  padding: 32px 48px;
+}
+
+/* OTP SMALL CARD */
+.auth-card.otp-card {
+  max-width: 420px;
+  padding: 28px 32px;
+  text-align: center;
+}
+
+/* ================= HEADER ================= */
+
+.auth-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.brand-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  border: 2px solid #9ca3af;
+}
+
+.lang-select {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 14px;
+  color: #000;
+  background: #fff;
+}
+
+/* ================= TITLES ================= */
+
+.auth-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.auth-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 22px;
+}
+
+/* ================= FORMS ================= */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 36px;
+  row-gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+  color: #000;
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #111827;
+}
+
+/* ================= AUTOCOMPLETE ================= */
+
+.dropdown-box {
+  position: absolute;
+  top: 66px;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  max-height: 180px;
+  overflow-y: auto;
+  z-index: 40;
+}
+
+.dropdown-item {
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #000;
+}
+
+.dropdown-item:hover {
+  background: #f3f4f6;
+}
+
+/* ================= OTP ================= */
+
+.otp-box {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 20px 0 24px;
+}
+
+.otp-input {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  background: #fff;
+  outline: none;
+}
+
+.otp-input:focus {
+  border-color: #111827;
+}
+
+/* ================= CHECKBOX ================= */
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: #6b7280;
+  margin: 18px 0 22px;
+}
+
+/* ================= BUTTONS ================= */
+
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #111827;
+  color: #ffffff;
+  border: none;
+}
+
+.primary-btn:hover {
+  background: #000000;
+}
+
+.disabled-btn {
+  background: #e5e7eb;
+  color: #9ca3af;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .auth-card {
+    padding: 24px 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===================================================== */
+/* ================= SUCCESS PAGE ONLY ================= */
+/* ===================================================== */
+
+.success-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.success-wrapper .auth-card {
+  width: 460px;
+  height: 460px;          /* PERFECT SQUARE */
+  max-width: unset;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.success-wrapper .auth-header {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.success-animation {
+  width: 220px;
+  height: 220px;
+  margin-bottom: 20px;
+}
+
+.success-wrapper .primary-btn {
+  width: 100%;
+  margin-top: auto;
+}
+
+@media (max-width: 520px) {
+  .success-wrapper .auth-card {
+    width: 92%;
+    height: auto;
+    min-height: 420px;
+  }
+
+  .success-animation {
+    width: 180px;
+    height: 180px;
+  }
+}
