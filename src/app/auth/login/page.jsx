@@ -69,7 +69,7 @@ export default function LoginPage() {
             onClick={() => setOpen(!open)}
             className="flex items-center gap-2 w-[110px] shrink-0 text-sm text-black"
           >
-            <img
+            <image
               src={country.flag}
               alt={country.name}
               className="w-5 h-4 rounded-sm object-cover"
