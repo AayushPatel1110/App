@@ -1,19 +1,61 @@
 "use client"
 
+import { useState, useRef, useEffect } from "react"
+import phoneCodes from "@/constants/phoneCodes.json"
+
 export default function PhoneInput({
   t,
   mobile,
   setMobile,
   country,
   setCountry,
-  phoneCodes,
 }) {
-  const [open, setOpen] = useState(false)
-  const [search, setSearch] = useState("")
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const [dropdownStyle, setDropdownStyle] = useState({});
+  const wrapperRef = useRef(null);
+  const buttonRef = useRef(null);
+  const dropdownRef = useRef(null);
 
-  const filteredCountries = phoneCodes.filter(c =>
-    c.name.toLowerCase().includes(search.trim().toLowerCase())
-  )
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      // Close dropdown if click is outside wrapper and dropdown
+      if (
+        wrapperRef.current && 
+        !wrapperRef.current.contains(e.target) &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    if (open && buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setDropdownStyle({
+        top: rect.bottom + 8,
+        left: rect.left,
+        width: rect.width,
+      });
+    }
+  }, [open]);
+
+  const filteredCountries = phoneCodes.filter((c) => {
+    const searchTerm = search.toLowerCase().trim();
+    if (!searchTerm) return true;
+    
+    return (
+      c.name.toLowerCase().includes(searchTerm) ||
+      c.dialCode.includes(searchTerm) ||
+      (c.code && c.code.toLowerCase().includes(searchTerm))
+    );
+  });
 
   return (
     <>
@@ -21,19 +63,26 @@ export default function PhoneInput({
         {t.mobileLabel}
       </label>
 
-      <div className="relative mb-6">
-        <div className="flex items-center w-full rounded-lg border border-gray-300 bg-white px-3 py-3">
+      <div ref={wrapperRef} className="relative mb-6">
+        <div
+          ref={buttonRef}
+          className="flex items-center w-full rounded-lg border border-gray-300 bg-white px-3 h-[44px]"
+        >
           <button
             type="button"
-            onClick={() => setOpen(!open)}
-            className="flex items-center gap-2 w-[110px] shrink-0 text-sm text-black"
+            onClick={() => setOpen((p) => !p)}
+            className="flex items-center gap-2 min-w-[110px] text-sm text-black shrink-0 focus:outline-none"
           >
-            <img src={country.flag} alt={country.name} className="w-5 h-4" />
+            <img
+              src={country.flag}
+              alt={country.name}
+              className="w-5 h-4 object-cover rounded-sm"
+            />
             <span>{country.dialCode}</span>
-            <span className="ml-auto">▾</span>
+            <span className="ml-auto text-gray-500 text-xs">v</span>
           </button>
 
-          <div className="mx-3 h-5 w-px bg-gray-200" />
+          <div className="mx-3 h-5 w-px bg-gray-200 shrink-0" />
 
           <input
             type="text"
@@ -41,46 +90,56 @@ export default function PhoneInput({
             maxLength={10}
             placeholder={t.placeholder}
             value={mobile}
-            onChange={e =>
+            onChange={(e) =>
               setMobile(e.target.value.replace(/\D/g, ""))
             }
-            className="flex-1 outline-none text-sm text-black"
+            className="flex-1 min-w-0 outline-none text-sm text-black bg-transparent"
           />
         </div>
-
-        {open && (
-          <div className="absolute left-0 top-[58px] w-full bg-white border rounded-lg shadow-lg z-50">
-            <input
-              type="text"
-              placeholder="Search country"
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              className="w-full px-4 py-3 border-b text-sm outline-none"
-            />
-
-            <div className="max-h-60 overflow-y-auto">
-              {filteredCountries.map(c => (
-                <button
-                  key={`${c.name}-${c.dialCode}`}
-                  type="button"
-                  onClick={() => {
-                    setCountry(c)
-                    setOpen(false)
-                    setSearch("")
-                  }}
-                  className="w-full flex justify-between px-4 py-2 hover:bg-gray-100 text-sm"
-                >
-                  <div className="flex gap-3">
-                    <img src={c.flag} alt={c.name} className="w-5 h-4" />
-                    {c.name}
-                  </div>
-                  {c.dialCode}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
+
+      {open && (
+        <div ref={dropdownRef} className="phone-dropdown" style={dropdownStyle}>
+          <input
+            type="text"
+            placeholder="Search country"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => e.stopPropagation()}
+            autoComplete="off"
+          />
+
+          <ul>
+            {filteredCountries.length === 0 && (
+              <li className="px-4 py-3 text-sm text-gray-500" style={{cursor: 'default'}}>
+                No country found
+              </li>
+            )}
+
+            {filteredCountries.map((c) => (
+              <li
+                key={`${c.name}-${c.dialCode}`}
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  setCountry(c);
+                  setOpen(false);
+                  setSearch("");
+                }}
+                role="option"
+                aria-selected={country.dialCode === c.dialCode}
+                tabIndex={0}
+              >
+                <div className="flex items-center gap-3">
+                  <img src={c.flag} alt={c.name} />
+                  <span>{c.name}</span>
+                </div>
+                <span>{c.dialCode}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </>
-  )
+  );
 }
+

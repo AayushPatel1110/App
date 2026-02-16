@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "title": "Find Verified Properties Across India",
+    "description": "Search smarter with SeaNeB and connect directly with trusted brokers, builders, and owners.",
+    "locations": ["Ahmedabad", "Mumbai", "Bengaluru", "Pune", "Delhi"]
+  },
+  "featuredListings": [
+    { "title": "Skyline Residency 3BHK", "location": "SG Highway, Ahmedabad", "price": "INR 92 Lac", "type": "Buy", "href": "/in" },
+    { "title": "Metroview Office Floor", "location": "Andheri East, Mumbai", "price": "INR 1.8 Cr", "type": "Commercial", "href": "/in" },
+    { "title": "Greenfield Rental Studio", "location": "Whitefield, Bengaluru", "price": "INR 28K / month", "type": "Rent", "href": "/in" },
+    { "title": "Sunset Villas 4BHK", "location": "Baner, Pune", "price": "INR 2.4 Cr", "type": "Buy", "href": "/in" }
+  ],
+  "trendingLocalities": ["GIFT City", "Whitefield", "Noida Extension", "Kharadi", "Powai", "Indirapuram"],
+  "stats": [
+    { "label": "Verified Listings", "value": "12K+" },
+    { "label": "Monthly Visitors", "value": "75K+" },
+    { "label": "Localities Covered", "value": "420+" },
+    { "label": "Partner Brokers", "value": "900+" }
+  ],
+  "testimonials": [
+    { "name": "Riya Shah", "role": "Home Buyer", "quote": "SeaNeB made shortlisting simple. I contacted verified brokers in one day." },
+    { "name": "Aman Verma", "role": "Tenant", "quote": "The location-based discovery is excellent. I found a rental near my office quickly." },
+    { "name": "Harsh Realty", "role": "Broker Partner", "quote": "Lead quality improved and response tracking is much easier now." }
+  ],
+  "cta": {
+    "title": "List faster. Close smarter.",
+    "description": "Post your property or install the app to manage discovery on the go.",
+    "primary": { "label": "Post Property", "href": "/partner" },
+    "secondary": { "label": "Get the App", "href": "/home#download" }
+  }
+}

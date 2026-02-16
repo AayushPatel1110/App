@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "eyebrow": "Partner",
+    "title": "Grow With SeaNeB Partner Program",
+    "description": "For brokers, builders, and agents who want higher visibility and stronger lead quality."
+  },
+  "partnerTypes": [
+    { "title": "Broker", "description": "Get quality leads in your active localities." },
+    { "title": "Builder", "description": "Showcase inventory and project credibility." },
+    { "title": "Agent", "description": "Expand local reach with verified listings." }
+  ],
+  "benefits": [
+    "Better local discoverability in search flows.",
+    "Dashboard-based listing and lead management.",
+    "Verification support to improve user trust."
+  ],
+  "dashboardPreview": [
+    "Listing performance snapshot",
+    "Inquiry response queue",
+    "Market demand highlights"
+  ],
+  "plans": [
+    { "name": "Basic", "price": "INR 0", "features": ["Profile listing", "1 active city", "Email support"] },
+    { "name": "Premium", "price": "INR 2,999/mo", "features": ["Priority visibility", "5 active cities", "Phone support"] },
+    { "name": "Featured", "price": "INR 7,999/mo", "features": ["Top placement", "Unlimited cities", "Dedicated manager"] }
+  ],
+  "cta": {
+    "title": "Start onboarding in minutes",
+    "description": "Create your SeaNeB partner profile and publish high-quality listings.",
+    "primary": { "label": "Register as Partner", "href": "/auth/business-option" },
+    "secondary": { "label": "Talk to Sales", "href": "/contact" }
+  }
+}

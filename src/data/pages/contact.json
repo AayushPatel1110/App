@@ -1,0 +1,22 @@
+{
+  "hero": {
+    "eyebrow": "Contact",
+    "title": "Talk to the SeaNeB Team",
+    "description": "We are here for support, onboarding, and partnership discussions."
+  },
+  "office": {
+    "address": "SeaNeB Technologies Private Limited, 407 Jol, Anand 388120, Gujarat, India",
+    "email": "hello@seaneb.org",
+    "phone": "+91 (8511) SEANEB",
+    "hours": "Mon - Sat, 9:00 AM - 7:00 PM"
+  },
+  "support": [
+    "Help center for common product questions",
+    "Dedicated partner onboarding support",
+    "Technical issue escalation workflow"
+  ],
+  "faqPreview": [
+    { "question": "How quickly can I get a response?", "answer": "Most requests get first response within 4 hours on business days." },
+    { "question": "Can I request a partnership demo?", "answer": "Yes, use the contact form and mention your business profile details." }
+  ]
+}

@@ -1,19 +1,30 @@
 "use client"
 
-import LanguageDropdown from "./LanguageDropdown"
+import Link from "next/link";
+import LanguageDropdown from "./LanguageDropdown";
+import BrandLogo from "./BrandLogo";
+import eng from "@/constants/i18/eng.json";
+import guj from "@/constants/i18/guj.json";
+import hindi from "@/constants/i18/hindi.json";
+
+const LANG_MAP = { eng, guj, hindi };
 
 export default function AuthHeader({ language, setLanguage }) {
+  const labels = LANG_MAP[language] || eng;
+
   return (
-    <div className="flex items-center justify-between mb-8">
-      <div className="flex items-center gap-2 text-xl font-semibold text-gray-600">
-        <div className="w-6 h-6 rounded-full border-2 border-gray-400" />
-        SeaNeB
+    <header className="relative w-full pb-4">
+      <div className="absolute top-0 right-0 z-50">
+        <LanguageDropdown language={language} onChange={setLanguage} labels={labels} />
       </div>
 
-      <LanguageDropdown
-        value={language}
-        onChange={setLanguage}
-      />
-    </div>
-  )
+      <Link href="/" className="hover:opacity-80 transition" onClick={(e) => e.stopPropagation()}>
+        <BrandLogo
+          size={48}
+          titleClass="logo-text"
+          subtitleClass="logo-subtext"
+        />
+      </Link>
+    </header>
+  );
 }

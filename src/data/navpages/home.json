@@ -1,0 +1,105 @@
+{
+  "hero": {
+    "title": "Find Verified Properties Across India",
+    "description": "Search smarter with SeaNeB and connect directly with trusted brokers, builders, and owners.",
+    "locations": []
+  },
+  "searchSection": {
+    "tabs": [
+      { "key": "buy", "label": "Buy" },
+      { "key": "rent", "label": "Rent" },
+      { "key": "new_launch", "label": "New Launch" },
+      { "key": "commercial", "label": "Commercial" },
+      { "key": "plots_land", "label": "Plots/Land" },
+      { "key": "projects", "label": "Projects" },
+      { "key": "post_property", "label": "Post Property" }
+    ],
+    "recentSearches": ["Buy in Anand", "View all searches"],
+    "tabConfig": {
+      "buy": {
+        "modeOptions": ["Buy", "Resale", "Ready to Move"],
+        "typeOptions": ["All Residential", "Apartment", "Villa", "Independent House", "Plot"],
+        "categoryOptions": ["Residential Buy", "Commercial Buy", "Luxury Homes"],
+        "placeholder": "Search ",
+        "propertyTypes": ["Ready to move", "New booking", "Luxury homes", "Gated community"],
+        "investmentOptions": ["Pre-Leased", "High ROI", "Low Risk", "Near Metro"],
+        "quickFilters": ["Budget", "Area", "Construction Status", "Posted By"]
+      },
+      "rent": {
+        "modeOptions": ["Rent", "PG", "Co-Living"],
+        "typeOptions": ["All Residential", "Apartment", "Independent House", "Studio"],
+        "categoryOptions": ["Residential Rent", "PG/Hostel", "Commercial Rent"],
+        "placeholder": "Search \"flats for rent in sector 77 Noida\"",
+        "propertyTypes": ["Semi Furnished", "Fully Furnished", "Family", "Bachelors"],
+        "investmentOptions": ["Near Office", "Near Metro", "Pet Friendly", "Low Deposit"],
+        "quickFilters": ["Rent Budget", "Area", "Furnishing", "Tenant Preference"]
+      },
+      "new_launch": {
+        "modeOptions": ["New Launch", "Under Construction", "Book Now"],
+        "typeOptions": ["All Projects", "Apartment", "Villa", "Township"],
+        "categoryOptions": ["New Launch Projects", "Pre-Launch", "Ready Soon"],
+        "placeholder": "Search \"new launch projects in Pune\"",
+        "propertyTypes": ["RERA Approved", "Phase 1", "Possession 2026", "Premium"],
+        "investmentOptions": ["Builder Offer", "Pre-Launch Price", "Flexible Payment", "Early Access"],
+        "quickFilters": ["Budget", "Builder", "Possession", "Configuration"]
+      },
+      "commercial": {
+        "modeOptions": ["Buy", "Rent", "Lease"],
+        "typeOptions": ["All Commercial", "Office", "Retail", "Warehouse", "Industrial"],
+        "categoryOptions": ["Office Space", "Retail Shops", "Warehouses"],
+        "placeholder": "Search \"commercial office space in Mumbai\"",
+        "propertyTypes": ["Bare shell", "Co-working", "Retail shop", "Warehouse"],
+        "investmentOptions": ["Pre Leased", "Business District", "High Footfall", "Grade A"],
+        "quickFilters": ["Budget", "Area", "Property Status", "Posted By"]
+      },
+      "plots_land": {
+        "modeOptions": ["Buy", "Investment", "Agriculture"],
+        "typeOptions": ["Residential", "Commercial", "Agricultural"],
+        "categoryOptions": ["Residential Plots", "Commercial Plots", "Agricultural Land"],
+        "placeholder": "Search \"plots in gated society\"",
+        "propertyTypes": ["Corner Plot", "Gated Society", "Main Road", "NA/NOC Ready"],
+        "investmentOptions": ["High Appreciation", "Near Highway", "Town Planning Zone", "Low Entry"],
+        "quickFilters": ["Budget", "Area", "Facing", "Posted By"]
+      },
+      "projects": {
+        "modeOptions": ["Projects", "Ready Projects", "Top Rated"],
+        "typeOptions": ["All Projects", "Residential", "Commercial", "Mixed Use"],
+        "categoryOptions": ["Top Projects", "RERA Projects", "Builder Projects"],
+        "placeholder": "Search \"top projects in Bengaluru\"",
+        "propertyTypes": ["Top Builders", "RERA Projects", "Near Metro", "Family Focused"],
+        "investmentOptions": ["High Demand", "Fast Growing", "Top Locality", "Value Buy"],
+        "quickFilters": ["Budget", "Builder", "Project Status", "Configuration"]
+      },
+      "post_property": {
+        "modeOptions": ["Sell", "Rent Out", "List Project"],
+        "typeOptions": ["Residential", "Commercial", "Plots/Land", "Project"],
+        "categoryOptions": ["Owner", "Broker", "Builder"],
+        "placeholder": "Describe your property to list it faster",
+        "propertyTypes": ["Owner Listing", "Broker Listing", "Builder Listing", "Urgent Sale"],
+        "investmentOptions": ["Featured Listing", "Verified Badge", "Lead Boost", "Priority Support"],
+        "quickFilters": ["Property Type", "Location", "Pricing", "Availability"]
+      }
+    }
+  },
+  "countriesSection": {
+    "title": "Available Countries",
+    "description": "Explore listings across multiple regions.",
+    "countries": ["India", "United States", "Australia", "Singapore"]
+  },
+  "homeInfoSection": {
+    "eyebrow": "SeaNeB",
+    "title": "One Platform For Smarter Property Discovery",
+    "description": "Search, compare, and connect with confidence using a clean real-estate workflow built for users and partners.",
+    "points": [
+      "Verified business-first listings with structured details.",
+      "Fast discovery across cities, states, and countries.",
+      "Simple connect flow for buyers, renters, and brokers."
+    ]
+  },
+  "downloadAppSection": {
+    "title": "SeaNeB App: Discover Property On The Go",
+    "description": "Get the app for free and explore verified properties anytime.",
+    "appStoreHref": "https://apps.apple.com",
+    "playStoreHref": "https://play.google.com"
+  }
+}

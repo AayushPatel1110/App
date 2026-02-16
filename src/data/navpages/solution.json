@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "eyebrow": "Solutions",
+    "title": "Fixing Traditional Real Estate Friction",
+    "description": "SeaNeB combines verified data, smart filters, and partner workflows for faster property decisions."
+  },
+  "problems": [
+    "Scattered and unverified listing information.",
+    "Slow broker response and unclear follow-up trails.",
+    "Poor locality-level visibility for buyers and renters."
+  ],
+  "solutions": [
+    "Verified listing and business trust layers.",
+    "Structured local pages by state, city, and area.",
+    "Dashboard-backed lead and listing management tools."
+  ],
+  "features": [
+    { "title": "Smart Search", "description": "Filter by location and intent for quicker shortlisting." },
+    { "title": "Instant Alerts", "description": "Stay updated when matching properties are published." },
+    { "title": "Verified Listings", "description": "Reduce risk with better listing context and trust signals." }
+  ],
+  "workflow": [
+    "Create profile and define operating areas.",
+    "Publish listings with complete details.",
+    "Receive qualified interest and respond faster.",
+    "Track conversion and improve over time."
+  ],
+  "benefits": [
+    "Higher listing visibility in relevant local searches.",
+    "Improved lead quality and response efficiency.",
+    "Better user trust through cleaner data quality."
+  ],
+  "cta": {
+    "title": "Launch your SeaNeB growth workflow",
+    "description": "Start as a partner and make your listings discoverable today.",
+    "primary": { "label": "Become a Partner", "href": "/partner" },
+    "secondary": { "label": "Contact Team", "href": "/contact" }
+  }
+}

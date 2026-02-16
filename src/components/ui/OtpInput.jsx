@@ -1,52 +1,33 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
-export default function OtpInput({
-  length = 4,
-  onComplete,
-  disabled = false
-}) {
-  const [otp, setOtp] = useState(Array(length).fill(""));
-  const inputs = useRef([]);
+export default function OtpInput({ length = 4, onChange }) {
+  const inputsRef = useRef([]);
 
-  const filled = otp.every(v => v);
+  const handleChange = (e, index) => {
+    const value = e.target.value.replace(/\D/, "");
+    if (!value) return;
+    e.target.value = value;
 
-  const onChange = (value, index) => {
-    if (!/^\d?$/.test(value)) return;
-
-    const next = [...otp];
-    next[index] = value;
-    setOtp(next);
-
-    if (value && index < length - 1) {
-      inputs.current[index + 1]?.focus();
+    if (index < length - 1) {
+      inputsRef.current[index + 1]?.focus();
     }
 
-    if (next.every(v => v)) {
-      onComplete?.(next.join(""));
-    }
-  };
-
-  const onKeyDown = (e, index) => {
-    if (e.key === "Backspace" && !otp[index] && index > 0) {
-      inputs.current[index - 1]?.focus();
-    }
+    const otp = inputsRef.current.map((input) => input?.value || "").join("");
+    onChange?.(otp);
   };
 
   return (
-    <div className="otp-box">
-      {otp.map((v, i) => (
+    <div className="flex gap-3">
+      {Array.from({ length }).map((_, i) => (
         <input
           key={i}
-          ref={el => (inputs.current[i] = el)}
-          value={v}
+          ref={(el) => (inputsRef.current[i] = el)}
+          type="password"
           maxLength={1}
-          onChange={e => onChange(e.target.value, i)}
-          onKeyDown={e => onKeyDown(e, i)}
-          className="otp-input"
-          inputMode="numeric"
-          disabled={disabled}
+          onChange={(e) => handleChange(e, i)}
+          className="w-14 h-14 text-center text-xl border border-gray-200 rounded-xl outline-none focus:border-black"
         />
       ))}
     </div>

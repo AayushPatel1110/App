@@ -1,0 +1,66 @@
+{
+  "name": "SeaNeB - Real Estate",
+  "short_name": "SeaNeB",
+  "description": "Find your perfect property with SeaNeB. Browse verified apartments, houses, and commercial properties.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#d73f57",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logos/light-logo.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logos/light-logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logos/Fav.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/logos/Frame 2147227478.svg",
+      "sizes": "540x720",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["real-estate", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Search Properties",
+      "short_name": "Search",
+      "description": "Search for properties near you",
+      "url": "/home/in",
+      "icons": [
+        {
+          "src": "/logos/light-logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Login",
+      "short_name": "Login",
+      "description": "Sign in to your account",
+      "url": "/auth/login",
+      "icons": [
+        {
+          "src": "/logos/Fav.svg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false
+}

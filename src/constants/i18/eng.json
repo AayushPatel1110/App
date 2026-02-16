@@ -12,6 +12,10 @@
   "otpSubtitle": "Enter the 4-digit code sent to",
   "verifyOtp": "Verify OTP",
   "resendOtp": "Resend OTP",
+  "languageLabel": "Select language",
+  "languageEnglish": "English",
+  "languageGujarati": "Gujarati",
+  "languageHindi": "Hindi",
 
   "completeProfileTitle": "Complete Your Profile",
   "completeProfileSubtitle": "Please fill in the details below",

@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { getProducts } from "@/services/pro.service"
 
 export default function CompleteProfileForm({ t }) {
   const [form, setForm] = useState({
@@ -11,8 +12,25 @@ export default function CompleteProfileForm({ t }) {
     dob: "",
     hometown: "",
     seanebId: "",
+    product: "",
     agree: false
   })
+
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    let mounted = true
+    ;(async () => {
+      try {
+        const res = await getProducts()
+        if (!mounted) return
+        setProducts(res || [])
+      } catch (e) {
+        // ignore - keep empty list
+      }
+    })()
+    return () => { mounted = false }
+  }, [])
 
   const hometowns = [
     "Rameswaram, Tamil Nadu",
@@ -34,6 +52,7 @@ export default function CompleteProfileForm({ t }) {
     form.dob &&
     form.hometown &&
     form.seanebId &&
+    form.product &&
     form.agree
   )
 
@@ -55,11 +74,16 @@ export default function CompleteProfileForm({ t }) {
           onChange={v => setForm({ ...form, lastName: v })}
         />
 
-        <Input
-          label={t.email}
-          value={form.email}
-          onChange={v => setForm({ ...form, email: v })}
-        />
+        <div className="form-group">
+          <label className="form-label">{t.email} *</label>
+          <input
+            type="email"
+            className="form-input"
+            placeholder="you@example.com"
+            value={form.email}
+            onChange={e => setForm({ ...form, email: e.target.value })}
+          />
+        </div>
 
         <Select
           label={t.gender}
@@ -108,6 +132,22 @@ export default function CompleteProfileForm({ t }) {
         onChange={v => setForm({ ...form, seanebId: v })}
       />
 
+      <div className="form-group full-width">
+        <label className="form-label">Select Property / Product *</label>
+        <select
+          className="form-select"
+          value={form.product}
+          onChange={e => setForm({ ...form, product: e.target.value })}
+        >
+          <option value="">Select Property / Product</option>
+          {products.map(p => (
+            <option key={p.product_id || p.id} value={p.product_key || p.product_id || p.id}>
+              {p.product_name || p.name || p.product_key}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className="checkbox-row">
         <input
           type="checkbox"
@@ -129,8 +169,7 @@ export default function CompleteProfileForm({ t }) {
   )
 }
 
-// this is feilds that can be reusbale 
-
+// Reusable form input fields
 function Input({ label, value, onChange, type = "text" }) {
   return (
     <div className="form-group">

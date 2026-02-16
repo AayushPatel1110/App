@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "eyebrow": "About SeaNeB",
+    "title": "A Modern Trust Layer for Real Estate Discovery",
+    "description": "SeaNeB helps property seekers and businesses connect with verified, structured, and local-first experiences."
+  },
+  "mission": "Make real estate discovery transparent, location-aware, and action-oriented for every user.",
+  "vision": "Become the most trusted property platform where verified data and faster connections drive better decisions.",
+  "workflow": [
+    { "step": "Search", "description": "Explore listings by country, state, city, and locality." },
+    { "step": "Connect", "description": "Reach verified businesses directly from listing pages." },
+    { "step": "Close", "description": "Compare options and move confidently with complete context." }
+  ],
+  "verification": [
+    "Business profile checks for trust and transparency.",
+    "Listing detail quality checks to reduce spam and noise.",
+    "Location hierarchy mapping for accurate discovery."
+  ],
+  "stats": [
+    { "label": "Verified Businesses", "value": "850+" },
+    { "label": "Cities Active", "value": "120+" },
+    { "label": "Listings Reviewed", "value": "30K+" },
+    { "label": "Support Satisfaction", "value": "96%" }
+  ],
+  "team": [
+    { "name": "Product Team", "role": "Platform Experience", "focus": "Search UX and trust workflows" },
+    { "name": "Operations Team", "role": "Verification", "focus": "Listing and business quality checks" },
+    { "name": "Growth Team", "role": "Partner Success", "focus": "Broker and builder onboarding" }
+  ],
+  "cta": {
+    "title": "Explore SeaNeB in your city",
+    "description": "Discover verified listings and partner-ready workflows.",
+    "primary": { "label": "Browse India", "href": "/in" },
+    "secondary": { "label": "See Solutions", "href": "/solution" }
+  }
+}

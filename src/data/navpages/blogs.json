@@ -1,0 +1,28 @@
+{
+  "hero": {
+    "eyebrow": "Blogs",
+    "title": "Real Estate Insights That Drive Better Decisions",
+    "description": "Read practical updates for buyers, renters, brokers, and builders."
+  },
+  "categories": ["All", "Buying", "Renting", "Commercial", "Market Trends", "Broker Growth"],
+  "posts": [
+    { "title": "Checklist Before Buying a Flat in 2026", "excerpt": "Key checks to perform before finalizing your property purchase.", "category": "Buying", "readTime": "6 min read", "href": "/blogs" },
+    { "title": "How to Compare Rental Listings Like a Pro", "excerpt": "A quick framework to evaluate rent, location, and commute impact.", "category": "Renting", "readTime": "5 min read", "href": "/blogs" },
+    { "title": "Commercial Leasing Trends This Quarter", "excerpt": "What businesses should watch in current office and retail markets.", "category": "Commercial", "readTime": "7 min read", "href": "/blogs" },
+    { "title": "Lead Quality Playbook for Brokers", "excerpt": "Simple listing and response tactics to improve conversion outcomes.", "category": "Broker Growth", "readTime": "8 min read", "href": "/blogs" },
+    { "title": "Locality Signals That Matter Most", "excerpt": "Understand infra, demand, and price movement before deciding.", "category": "Market Trends", "readTime": "6 min read", "href": "/blogs" },
+    { "title": "How to Price Your Property Listing Right", "excerpt": "Avoid underpricing or overpricing with practical benchmarks.", "category": "Broker Growth", "readTime": "5 min read", "href": "/blogs" }
+  ],
+  "popular": [
+    { "title": "How SeaNeB Verification Works", "excerpt": "Inside our quality and trust checks for listings.", "category": "Market Trends", "readTime": "4 min read", "href": "/about" },
+    { "title": "Faster Property Responses: Broker Guide", "excerpt": "Operational habits that improve lead response rate.", "category": "Broker Growth", "readTime": "5 min read", "href": "/solution" }
+  ],
+  "pagination": {
+    "currentPage": 1,
+    "totalPages": 5
+  },
+  "newsletter": {
+    "title": "Get Weekly Property Insights",
+    "description": "Subscribe for practical market updates and product news."
+  }
+}

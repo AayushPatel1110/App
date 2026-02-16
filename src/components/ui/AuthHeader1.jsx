@@ -1,22 +1,22 @@
 "use client"
 
+import Link from "next/link";
+import LanguageDropdown from "./LanguageDropdown";
+import BrandLogo from "./BrandLogo";
+
 export default function AuthHeader({ language, setLanguage }) {
   return (
     <div className="auth-header">
-      <div className="brand">
-        <div className="brand-dot" />
-        SeaNeB
-      </div>
+      <Link href="/" className="hover:opacity-80 transition">
+        <BrandLogo
+          size={40}
+          titleClass="text-2xl font-semibold text-gray-900"
+          subtitleClass="text-xs font-medium tracking-wide text-gray-600 uppercase"
+          compact
+        />
+      </Link>
 
-      <select
-        value={language}
-        onChange={e => setLanguage(e.target.value)}
-        className="lang-select"
-      >
-        <option value="eng">ENG</option>
-        <option value="guj">GUJ</option>
-        <option value="hindi">HIN</option>
-      </select>
+      <LanguageDropdown language={language} onChange={setLanguage} />
     </div>
   )
 }

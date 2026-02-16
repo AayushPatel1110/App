@@ -1,0 +1,253 @@
+═══════════════════════════════════════════════════════════════════════════════
+                         QUICK REFERENCE GUIDE
+                      SeaNeB Real Estate - Frontend
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 GETTING STARTED:
+
+npm install          # Install dependencies
+npm run dev         # Start development server (http://localhost:3000)
+npm run build       # Build for production
+npm start           # Start production server
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔗 APPLICATION FLOW:
+
+/auth/login
+    ↓
+  [Enter Phone Number]
+    ↓
+/auth/otp
+    ↓
+  [Verify OTP]
+    ├→ Existing User → /dashboard
+    └→ New User → /auth/complete-profile
+                ↓
+            [Fill Profile + Email Verify]
+                ↓
+            /auth/success
+                ↓
+            /dashboard (Products List)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔑 KEY FILES TO REMEMBER:
+
+🔐 Authentication:
+   src/services/otp.service.js
+   src/services/email.service.js
+   src/services/signup.service.js
+   src/services/api.js (Token management)
+   src/services/store/authStore.js (Token storage)
+
+📦 Products (NEW):
+   src/services/products.service.js
+   src/components/Products.jsx
+   src/app/dashboard/page.jsx
+
+🎨 UI Components:
+   src/components/ui/PhoneInput.jsx
+   src/components/ui/OtpInput.jsx
+   src/components/ui/DatePcker.jsx
+   src/components/ui/AutoComplete.jsx
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📝 ENVIRONMENT VARIABLES:
+
+Base API URL: https://dev.seaneb.com/api/v1
+Product Key: "seaneb"
+
+(Update in: src/services/api.js if needed)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔒 TOKEN MANAGEMENT:
+
+Access Token: 15 minutes → Auto-refresh on 401
+Refresh Token: 30 days → httpOnly cookie (automatic)
+CSRF Token: x-csrf-token header on /auth/refresh
+Session: 6 hours → Auto-logout + redirect to login
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📊 API ENDPOINTS:
+
+OTP:
+  POST /otp/send-otp
+  POST /otp/verify-otp
+
+Email:
+  POST /auth/email/send-otp
+  POST /auth/email/verify-otp
+
+Signup:
+  POST /auth/signup
+
+Token:
+  POST /auth/refresh
+
+Products:
+  GET /products
+  GET /products/:id
+  GET /products/search?query=...
+
+City:
+  GET /autocomplete-cities?input=...
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🧪 CONSOLE DEBUG LOGS:
+
+Login Flow:
+  📤 POST /otp/send-otp
+  ✅ 200 /otp/send-otp
+
+OTP Verify:
+  📤 POST /otp/verify-otp
+  ✅ 200 /otp/verify-otp
+  ✅ Access token set
+  ✅ CSRF token set
+  ✅ Existing user - redirecting to dashboard
+
+Products Load:
+  📦 Fetching products...
+  📤 GET /products
+  ✅ 200 /products
+  ✅ Products fetched: { count: 5, products: [...] }
+
+Token Refresh:
+  ❌ 401 /any-endpoint
+  🔄 Refreshing access token...
+  📤 POST /auth/refresh
+  ✅ Access token refreshed
+  📤 [RETRY] Original request
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🐛 TROUBLESHOOTING:
+
+Issue: 400 Error on OTP Verify
+Fix: Check identifier_type=0 and purpose=0 in otp.service.js
+
+Issue: "Product key is required"
+Fix: product_key: "seaneb" must be in all OTP requests
+
+Issue: Redirect flickering between pages
+Fix: Check isNavigating flag + profile_completed flag in otp/page.jsx
+
+Issue: Products not loading
+Fix: Check Authorization header has Bearer token in Network tab
+
+Issue: Auto-refresh not working
+Fix: Verify CSRF token is in authStore via getCsrfToken()
+
+Issue: Session expired after 15 min
+Fix: Normal behavior - auto-refresh happens in background
+
+Issue: Session expired after 6 hours
+Fix: Normal behavior - must login again (server-side timeout)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💾 SESSIONSTORAGE KEYS:
+
+otp_context: Login context { country_code, mobile_number, via }
+otp_cc: Country code for profile completion
+otp_mobile: Mobile number for profile completion
+access_token: Bearer token
+csrf_token: CSRF validation token
+profile_completed: Flag for existing users
+
+Clear all:
+  sessionStorage.clear()
+  authStore.clearAll()
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔗 IMPORTANT FUNCTIONS:
+
+Login:
+  sendOtp({ via }): Send OTP to mobile
+  verifyOtp({ otp }): Verify OTP
+
+Signup:
+  sendEmailOtp({ email }): Send email OTP
+  verifyEmailOtp({ email, otp }): Verify email OTP
+  signupUser(data): Complete registration
+
+Products:
+  getProducts(): Fetch user products
+  getProductById(id): Get product details
+  searchProducts(query): Search products
+
+Auth:
+  authStore.getAccessToken(): Get current token
+  authStore.setAccessToken(token): Save token
+  authStore.getCsrfToken(): Get CSRF token
+  authStore.setCsrfToken(token): Save CSRF token
+  authStore.clearAll(): Clear all tokens
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📱 RESPONSIVE BREAKPOINTS:
+
+Mobile: < 768px (1 column)
+Tablet: 768px - 1024px (2 columns)
+Desktop: > 1024px (3 columns)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🌐 LANGUAGES SUPPORTED:
+
+English (eng)
+Gujarati (guj)
+Hindi (hindi)
+
+Switch in UI header via LanguageDropdown component
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔄 AUTHENTICATION CONSTANTS:
+
+IDENTIFIER_TYPE_MOBILE = 0
+PURPOSE_LOGIN = 0
+DEFAULT_VIA = "whatsapp"
+PRODUCT_KEY = "seaneb"
+
+(Change in src/services/otp.service.js if needed)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ PRODUCTION DEPLOYMENT CHECKLIST:
+
+[ ] Update API base URL (if different)
+[ ] Update product_key if needed
+[ ] Test on production server
+[ ] Verify HTTPS only
+[ ] Test token refresh
+[ ] Test session expiry
+[ ] Monitor console logs
+[ ] Test on mobile devices
+[ ] Test on different browsers
+[ ] Verify email delivery
+[ ] Load test products API
+[ ] Monitor error logs
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📞 SUPPORT:
+
+Check these files first:
+1. COMPLETE_AUDIT_REPORT.txt (Detailed audit)
+2. IMPLEMENTATION_STATUS.txt (Implementation details)
+3. TOKEN_AND_PRODUCTS_IMPLEMENTATION.md (Token flow)
+4. Browser console logs (Detailed execution trace)
+5. Network tab in DevTools (API calls)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Last Updated: February 5, 2026
+Status: Production Ready ✅
+═══════════════════════════════════════════════════════════════════════════════

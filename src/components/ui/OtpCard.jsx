@@ -1,6 +1,7 @@
 "use client";
 
 export default function OtpCard({
+  header,
   title,
   subtitle,
   children,
@@ -12,15 +13,22 @@ export default function OtpCard({
     <div className="page-center">
       <div className="auth-card otp-card">
 
+        {/* Reusable Auth Header */}
+        {header && header}
+
+        {/* Page content */}
         {children}
 
-        <button
-          disabled={disabled}
-          onClick={onSubmit}
-          className={`primary-btn ${disabled ? "disabled-btn" : ""}`}
-        >
-          {submitText}
-        </button>
+        {/* Submit Button */}
+        {submitText && (
+          <button
+            disabled={disabled}
+            onClick={onSubmit}
+            className={`primary-btn ${disabled ? "disabled-btn" : ""}`}
+          >
+            {submitText}
+          </button>
+        )}
 
       </div>
     </div>
